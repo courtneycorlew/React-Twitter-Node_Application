@@ -1,32 +1,64 @@
-.pagination-status {
-  list-style: none !important;
-  display: inline-flex;
-  margin: 0 auto;
-}
-ul {
-  padding: 0 !important;
-}
-a {
-  padding: 10px;
-}
-
-a:hover {
-  background-color: #68d9f5;
-  color: #ffffff;
-}
-
 body, html {
   background-color: #68d9f5;
   margin: 0;
   padding: 0;
 }
 
+/******************** 
+Body 
+********************/
+
 .wrapper {
   background-color: #fff;
   width: 80%;
   margin: 10% auto;
   padding: 5%;
+  border: 1px solid #18333a;
+  box-shadow: 2px 4px 20px #18333a;
 }
+.header-text {
+  text-transform: uppercase;
+  color: #18333a;
+  font-weight: 200;
+  font-size: 3em;
+}
+
+/******************** 
+TWEET TABLE 
+********************/
+
+.pagination-status {
+  list-style: none !important;
+  display: inline-flex;
+  margin: 0 auto;
+}
+.react-pagination-table {
+  clear: both;
+}
+.table {
+  margin-bottom: 5% !important;
+}
+
+/* Table List */
+ul {
+  padding: 0 !important;
+}
+
+/******************** 
+Links
+********************/
+
+a {
+  padding: 10px;
+}
+a:hover {
+  background-color: #68d9f5;
+  color: #ffffff;
+}
+
+/******************** 
+Buttons 
+********************/
 
 button {
   text-transform: uppercase;
@@ -36,16 +68,10 @@ button {
   border: none;
   margin: 5px;
 }
-
 button:hover {
   color: #18333a;
   background-color: #fff;
 }
-
-.header-text {
-  text-transform: uppercase;
-  color: #18333a;
-}
-.table {
-  margin-bottom: 5% !important;
+.align-buttons {
+  text-align: right;
 }

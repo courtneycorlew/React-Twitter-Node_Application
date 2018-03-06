@@ -11,78 +11,68 @@ export default class FirstPage extends Component {
     super(props) 
     this.state = {
       list: [],
-      show: false,
-      showOne: false,
-      showing: false,
-      showingDesc: false,
+      show: false
     }
     
   }
 
 
-showTweets = (event) => {
+  showTweets = (event) => {
     fetch("http://localhost:3001/", {
       method: 'POST'
-  }).then(
+    }).then(
       (response) => response.json()
-  ).then((data) => {
+    ).then((data) => {
       this.setState({
         list: data,
+        show: true
       })
-        this.setState({
-          showOne: true
-        });
-        console.log('this state: ', this.state)
+    }) 
+    event.preventDefault()
+  }
 
-  }) 
-  event.preventDefault()
-}
-
-orderTweetsAsc = () => {
-  let list = this.state.list
-  let asc = _.orderBy(list, ['tweet'], ['asc']);
-  this.setState({ list: asc})
-}
-orderTweetsDesc = () => {
-  let list = this.state.list
-  let asc = _.orderBy(list, ['tweet'], ['asc']);
-  let desc = _.orderBy(asc, ['tweet'], ['desc']);
-  this.setState({list: desc })
-  console.log('desc: ', desc )
-}
+  orderTweetsAsc = () => {
+    let list = this.state.list
+    let asc = _.orderBy(list, ['tweet'], ['asc']);
+    this.setState({ list: asc})
+  }
+  orderTweetsDesc = () => {
+    let list = this.state.list
+    let asc = _.orderBy(list, ['tweet'], ['asc']);
+    let desc = _.orderBy(asc, ['tweet'], ['desc']);
+    this.setState({list: desc })
+  }
   render() {
-  //   let tweetList = () => {this.state.list.map((tweet, index) => (
-  //     <p>{tweet.tweet}</p>
-  // ))}
-  return (
-    
-    <div className="wrapper">
-       <div>
-       <h1 className="header-text">100 #oscars tweets</h1>
- 
-         <button type="submit" onClick={this.showTweets}>Show Tweets</button>
+    return (  
+      <div className="wrapper">
+        <div>
+          <h1 className="header-text">100 #oscars tweets</h1>
+            { !this.state.show ? 
+              <button type="submit" onClick={this.showTweets}>Show Tweets</button>
+              : null 
+            }
+          <div className="align-buttons">
+            {this.state.show ? 
+              <button onClick={this.orderTweetsAsc}>Ascending</button>
+              : null
+            }
 
-          <button onClick={this.orderTweetsAsc}>Ascending</button>
-          <button onClick={this.orderTweetsDesc}>Descending</button>
-    
-      </div>
-    
-      <TablePagination
-            title="Tweets"
+            {this.state.show ? 
+              <button onClick={this.orderTweetsDesc}>Descending</button>
+              : null 
+            }
+          </div>      
+        </div>
+        {this.state.show ? 
+          <TablePagination
             data={ this.state.list }
             columns="tweet"
             perPageItemCount={ 10 }
             totalCount={ 100 }
-        />
+          /> 
+          : null 
+        }
       </div>
-
     )
   }
 }
-
-
-
-
-
-
-
