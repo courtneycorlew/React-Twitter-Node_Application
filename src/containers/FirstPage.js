@@ -15,8 +15,7 @@ export default class FirstPage extends Component {
     }
     
   }
-
-
+  
   showTweets = (event) => {
     fetch("http://localhost:3001/", {
       method: 'POST'
