@@ -17,11 +17,6 @@ var twitter = new Twitter(keys.twitterKeys);
 var tweets = [];
 
 
-/* GET home page. */
-// router.get('/', function (req, res) {
-//     res.render('index', {title: 'Node Twitter', tweets: tweets});
-// });
-
 router.post('/', function (req, res) {
 
     var numTweets = 100;
